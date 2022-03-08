@@ -45,11 +45,12 @@ def level():
     print(Fore.RED + ' [3] Hard')
 
 
-def word(word, live):
-    sleep(0.7)
+def word(word, live, notin):
+    sleep(0.3)
     system('cls' if name == 'nt' else 'clear')
     print(Fore.RED + f.renderText(str(word)))
     print(Fore.YELLOW + " The selected word has {} letters".format(len(word)))
+    print(Fore.YELLOW + " The letters used so far " + Fore.WHITE + notin)
     print(Fore.YELLOW + " Remaining chance : {}".format('❤️' * live))
 
 
@@ -64,8 +65,8 @@ def select(text, title, logo):
         return -1
     
  
-def get_char(found, username, live):
-    word(found, live)
+def get_char(found, username, live, notin):
+    word(found, live, notin)
     return select("Enter the character you want ", username, ':)')
  
     

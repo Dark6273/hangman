@@ -8,6 +8,7 @@ USERNAME = ''
 WORD = ''
 FOUND = ''
 LIVE = 6
+NOTIN = ''
 
 
 def get_user_name():
@@ -71,9 +72,8 @@ def lose():
 
 
 def get_char(char):
-    global FOUND,LIVE
+    global FOUND, LIVE, NOTIN
     while LIVE > 0 and WORD != FOUND:
-        print(WORD)
         if char in WORD:
             count = 0
             ls = list(FOUND)
@@ -87,18 +87,22 @@ def get_char(char):
             FOUND = text
         else:
             LIVE -= 1
-        print(FOUND)
+            
+        if len(NOTIN) > 0:
+            NOTIN += '-' + char
+        else:
+            NOTIN += char
         if LIVE > 0 and WORD != FOUND:
-            get_char(banner.get_char(FOUND, USERNAME, LIVE))
+            get_char(banner.get_char(FOUND, USERNAME, LIVE, NOTIN))
     
     if LIVE > 0:
-        banner.word(WORD, LIVE)
+        banner.word(WORD, LIVE, NOTIN)
         banner.show('good job. you win', USERNAME, ':)')
         sleep(1)
         win()
         main()
     else:
-        banner.word(WORD, LIVE)
+        banner.word(WORD, LIVE, NOTIN)
         banner.show('Unfortunately you lost', USERNAME, ':(')
         sleep(1)
         lose()
@@ -137,7 +141,7 @@ def start_game():
     
     banner.show('The game has been successfully created', USERNAME, '!')    
     sleep(1)
-    get_char(banner.get_char(FOUND, USERNAME, LIVE))
+    get_char(banner.get_char(FOUND, USERNAME, LIVE, NOTIN))
 
 
 def score():
