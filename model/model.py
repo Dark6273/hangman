@@ -32,10 +32,11 @@ def get_user_name():
 
 # Reset global variables
 def reset():
-    global WORD, FOUND, LIVE
+    global WORD, FOUND, LIVE, NOTIN
     WORD = ''
     FOUND = ''
     LIVE = 6
+    NOTIN = ''
 
 
 # Write new data in score fine
