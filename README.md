@@ -1,6 +1,5 @@
 # HANGMAN Game
 
-Game Hengman
 Play Find words with the help of letters
 
 
